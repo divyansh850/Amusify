@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp</title>
+</head>
+<style>
+html {
+	color: #eee;
+}
+
+* {
+	font-family: "Gotham Rounded Book", "sans-serif";
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	min-height: 560px;
+	height: 100vh;
+	display: grid;
+	place-content: center;
+	background: #eee;
+}
+form{
+    min-width: 450px;
+	min-height: 520px;
+	padding: 15px;
+	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+	border-radius: 10px;
+	background: #2c2d31;
+}
+form h1{
+        text-align: center;
+        /* margin-top: 5px; */
+}
+form input{
+        display: flex;
+        margin-left: 40px;
+        border-radius: 50px; 
+        /* padding: 15px 50px; */
+        padding: 15px 20px;
+        padding-inline: 70px;
+        margin-bottom: 16px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        font-family: sans-serif;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+form #submit{
+    margin-left: 40px;
+    border-radius: 50px;
+	padding: 15px 20px;
+	margin-top: 7px;
+    padding-inline: 134px;
+	border: none;
+	outline: none;
+	font-size: 16px;
+    font-family: sans-serif;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: #1ed760;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #fff;
+	cursor: pointer;
+    /* margin-top: 5px; */
+}
+#logo {
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	margin: 30px;
+    gap: 2px;
+}
+
+#logo img{
+    height: 35px;
+    width: 35px;
+}
+form span {
+    font-family: sans-serif;
+    margin-top: 8px;
+	margin-left: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+form span label {
+	font-size: 18px;
+	text-transform: lowercase;
+}
+
+input[type="checkbox"] {
+    margin-top: 6px;
+	cursor: pointer;
+	accent-color: #3498db;
+}
+form #a {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    /* margin-left: 178px; */
+} 
+#a a{
+    text-decoration: none;
+    color: #2594dd;
+}   
+</style>
+<body>
+    <form action="/register" method="post">
+      <div id="logo">
+        <img src="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-icon-marilyn-scott-0.png" alt>
+		<h1>Spotify</h1>
+      </div>
+        
+      <input type="text" name="username" placeholder="Enter username">
+      <input type="password" name="password" placeholder="Enter password">
+      <input type="email" name="email" placeholder="Enter email">
+      <span>
+        <input type="checkbox" id="staySingedIn" checked>
+        <label for="staySingedIn">stay Signed In</label>
+      </span>
+      <input type="submit" id="submit">
+      <div id="a"><a href="/login">SignIn</a></div>
+    </form>
+</body>
+</html>
+

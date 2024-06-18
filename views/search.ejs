@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheets/style.css">
+  <style>
+    .right{
+      margin-top:5px ;
+    }
+    input,button{
+      color: black;
+    }
+    input{
+      outline: none;
+      padding: 4px 20px;
+      font-size: 14px;
+      color:black;
+    }
+    button{
+      padding: 4px 20px;
+    }
+    #part1{
+      display: flex;
+      gap: 10px;
+    }
+    .music{
+      padding-top: 70px;
+    }
+  </style>
+    
+</head>
+<body>
+  <div id="main">
+    <div id="innermain">
+      <div class="left">
+          <div class="leftupper">
+            <button>
+              <a href="/">
+                <i class="ri-home-5-line"></i>
+                <p>Home</p>
+              </a>
+            </button>
+            <button>
+              <a href="/search">
+                <i class="ri-search-line"></i>
+                <p>Search</p>
+              </a>
+            </button>
+          </div>
+          <div class="leftlower">
+            
+          </div>
+      </div>
+      <div class="right">
+        <div id="right-nav">
+          <div id="part1">
+            <!-- <i class="ri-arrow-left-s-line"></i>
+            <i class="ri-arrow-right-s-line"></i> -->
+          <input type="text" placeholder="Enter musicname" name="search">
+          <button onclick="searchSong()" class=" btn-primary">search</button>
+          </div>
+          <div id="part2">
+            <button>Explore Premium</button>
+            <i class="ri-notification-4-line"></i>
+            <i class="ri-team-line"></i>
+            <i class="ri-user-line"></i>
+          </div>
+        </div>
+        <div class="music">
+          
+        </div>
+        
+      </div>
+    </div>
+    <div class="last">
+      <audio src="" controls></audio>
+    </div>
+  </div>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    function songCardClicked(filename){
+      document.querySelector('audio').setAttribute('src',`/stream/${filename}`)
+      document.querySelector('audio').play();
+    }
+    async function searchSong(){
+       const result=await axios.post('/search',{
+            search:document.querySelector('input').value
+        })
+        console.log(result);
+        let clutter=''
+        result.data.songs.forEach(song => {
+            clutter+=`<div class="song" onclick="songCardClicked('${song.fileName}')" >
+              <img src="/poster/${song.poster}" alt="" />
+              <div class="text">
+                <h5>${song.title}</h5>
+                <p>${song.artist}</p>
+                <p>${song.album}</p>
+              </div>
+              <div class="playButton">
+                <button><i class="ri-play-fill"></i></button>
+              </div>
+            </div>`
+        });
+
+        document.querySelector('.music').innerHTML=clutter
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+<body>
+  <div id="main">
+    <div id="innermain">
+      <div class="left">
+          <div class="leftupper">
+            <button>
+              <a href="/">
+                <i class="ri-home-5-line"></i>
+                <p>Home</p>
+              </a>
+            </button>
+            <button>
+              <a href="/search">
+                <i class="ri-search-line"></i>
+                <p>Search</p>
+              </a>
+            </button>
+          </div>
+          <div class="leftlower">
+            
+          </div>
+      </div>
+      <div class="right">
+        <div id="right-nav">
+          <div id="part1">
+            <i class="ri-arrow-left-s-line"></i>
+            <i class="ri-arrow-right-s-line"></i>
+          </div>
+          <div id="part2">
+            <button>Explore Premium</button>
+            <i class="ri-notification-4-line"></i>
+            <i class="ri-team-line"></i>
+            <i class="ri-user-line"></i>
+          </div>
+        </div>
+        <div id="heading">
+          <h2>Spotify Original & Exclusive Podcasts</h2>
+          <h5>Show all</h5>
+        </div>
+        <div class="music">
+          <% currentUser.playlist[0].songs.forEach(song=>{ %>
+            <div class="song" onclick="songCardClicked('<%=song.fileName%>')" >
+              <img src="/poster/<%=song.poster%>" alt="" />
+              <div class="text">
+                <h5><%= song.title %></h5>
+                <p><%= song.artist %></p>
+                <p><%= song.album %></p>
+              </div>
+              <div class="playButton">
+                <button><i class="ri-play-fill"></i></button>
+              </div>
+              <div class="dropdown">
+                <button>Add to playList</button>
+                <div class="dropdown-content">
+                <p>Hello World!</p>][]
+                </div>
+              </div>
+            </div>
+          <% }) %>
+          
+        </div>
+        
+      </div>
+    </div>
+    <div class="last">
+      <div class="last-1">
+        <a class="last-left" href="/logout">
+          <i class="ri-logout-box-line"></i>
+          <p class="left-text">Logout</p>
+        </a>
+      </div>
+      <div class="last-2">
+        <audio src="" controls></audio>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    // document.querySelectorAll('.song').forEach(songCard=>{
+    //   songCard.addEventListener('click',(event)=>{
+    //      console.log(filename)
+    //   })
+    // })
+    function songCardClicked(filename){
+      document.querySelector('audio').setAttribute('src',`/stream/${filename}`)
+      document.querySelector('audio').play();
+    }
+  </script>
+</body>
+</html>
